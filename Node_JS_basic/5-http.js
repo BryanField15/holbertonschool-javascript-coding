@@ -44,19 +44,24 @@ countStudents('./database.csv')
       if (pathname === '/') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Hello Holberton School!');
-      }
-      if (pathname === '/students') {
+      } else if (pathname === '/students') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(studentData);
       } else {
-        res.writeHead(404, { 'Content-type': 'text/html' });
-        res.end('<h1>Page not found</h1>');
+        res.writeHead(404, { 'Content-type': 'text/plain' });
+        res.end('Not found');
       }
     });
 
-    app.listen(1245, () => {
-      console.log('Server listening on port 1245');
+    const hostname = 'localhost';
+    const port = 1245;
+
+    app.listen(port, hostname, () => {
+      console.log(`Server running at http://${hostname}:${port}/`);
     });
 
     module.exports = app;
+  })
+  .catch((error) => {
+    console.error('Cannot load the database', error);
   });

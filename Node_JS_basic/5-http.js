@@ -29,7 +29,7 @@ async function countStudents(path) {
 
 const hostname = 'localhost';
 const port = 1245;
-const path = './database.csv';
+const path = process.argv[2];
 
 const app = http.createServer(async (req, res) => {
   if (req.url === '/') {

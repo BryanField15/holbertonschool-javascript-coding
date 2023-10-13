@@ -1,8 +1,8 @@
-import fs from 'fs/promises';
+import fs from 'fs';
 
 async function readDatabase(filePath) {
   try {
-    const data = await fs.readFile(filePath, 'utf8');
+    const data = fs.readFile(filePath, 'utf8');
     const lines = data.split('\n').filter((line) => line.trim() !== '' && !line.startsWith('firstname'));
 
     const fields = {};
